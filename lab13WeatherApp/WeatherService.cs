@@ -5,18 +5,19 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace lab13WeatherApp
 {
     public class WeatherService
     {
-        public WeatherResponse GetWeather()
+        public WeatherResponse GetWeather(Point coord)
         {
             RestClient client = new RestClient("https://api.openweathermap.org/data/2.5");
 
             var request = new RestRequest("onecall")
-                .AddParameter("lat", 19)
-                .AddParameter("lon", 53)
+                .AddParameter("lat", coord.X)
+                .AddParameter("lon", coord.Y)
                 .AddParameter("appid", "17ad6d43cd925b3a89bb73a10ac2fb68")
                 .AddParameter("exclude", "hourly, minutly")
                 .AddParameter("lang", "pl")

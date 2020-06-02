@@ -6,26 +6,29 @@
         xmlns:local="clr-namespace:lab13WeatherApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <StackPanel>
-        <ItemsControl ItemsSource="{Binding Daily}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Dt}"/>
-                        <ItemsControl ItemsSource="{Binding Weather}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBox Visibility="Collapsed" x:Name="ImageTextBox" Text="{Binding Icon, StringFormat=http://openweathermap.org/img/wn/{0}@2x.png}"/>
-                                        <Image Width="25" Height="25" Source="{Binding Text, ElementName=ImageTextBox}"/>
-                                        <TextBlock Text="{Binding Description}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </StackPanel>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </StackPanel>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <ComboBox Name="CitiesComboBox" ItemsSource="{Binding Cities}" SelectionChanged="CitiesComboBox_SelectionChanged" SelectedValue="{Binding SelectedCity}"/>
+            <ItemsControl ItemsSource="{Binding Weather.Daily}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Dt}"/>
+                            <ItemsControl ItemsSource="{Binding Weather}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBox Visibility="Collapsed" x:Name="ImageTextBox" Text="{Binding Icon, StringFormat=http://openweathermap.org/img/wn/{0}@2x.png}"/>
+                                            <Image Width="25" Height="25" Source="{Binding Text, ElementName=ImageTextBox}"/>
+                                            <TextBlock Text="{Binding Description}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </ScrollViewer>
 </Window>

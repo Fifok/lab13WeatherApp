@@ -2,3 +2,4 @@
 Drugi converter do Icon
 Autofac
 Dodac scrollbar
+ComboBox z miastami
