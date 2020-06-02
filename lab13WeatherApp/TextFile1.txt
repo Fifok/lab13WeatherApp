@@ -1,0 +1,4 @@
+﻿Dt zamienic na datę (converter do resource)
+Drugi converter do Icon
+Autofac
+Dodac scrollbar
